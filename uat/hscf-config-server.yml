@@ -1,0 +1,24 @@
+spring:
+  rabbitmq:
+    host: 192.168.11.210
+    port: 5672
+  cloud:
+    config:
+      allowOverride: true
+      failFast: true
+      overrideNone: false
+      overrideSystemProperties: false
+ribbon:
+  ReadTimeout: 120000
+  ConnectTimeout: 120000
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 1
+  OkToRetryOnAllOperations: true
+
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 10000

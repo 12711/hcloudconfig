@@ -1,0 +1,49 @@
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.11.216:3311/cloud_job?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: handoracle
+  rabbitmq:
+    host: 192.168.12.48
+    port: 5672
+    username: guest
+    password: guest
+    publisher-confirms: true
+    virtual-host: /
+    listener:
+      acknowledge-mode: MANUAL
+  redis:
+    host: 192.168.12.48
+    port: 6379
+    clientName: API-GATEWAY
+    database: 2
+    dftExpire: 21600
+    lockDatabase: 6
+scurity:
+  oauth2:
+    resource:
+      jwt:
+        keyValue: |
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxhlV3wv8rMFafzglAKqc
+          7G0ZaUFeEnDeuB7LiMmPLvydOREbQj3hdp8JEkISAOlKObdDYadvtbM9JMTwEh/6
+          QZh+2wx2cbQ7F/RAUeCFqU1qRF+LvTSArLZc2f48t1KvsbcAhQUwcVMe5ukhNe//
+          CfIY6mlCFUWZdvw61yDiDnJ7dkwXaQdYdcgUzvSv754DB8xZV4iJdLlwXixfRTFh
+          6pQ8xpGxcaETNEwRkBi2dLBFYjfBhgh5lpvO8RYcKbnrKKA0VJ4/GamYT2mxjMuP
+          k+jsVVcOqpDKIwXZ00jxIN96PKVNXMFa6Dm2IPv15iaVcyN041EdB/+3plg0+ZsC
+          4QIDAQAB
+          -----END PUBLIC KEY-----
+ribbon:
+  ReadTimeout: 120000
+  ConnectTimeout: 120000
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 1
+  OkToRetryOnAllOperations: true
+
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 10000

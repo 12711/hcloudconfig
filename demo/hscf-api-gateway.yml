@@ -1,0 +1,71 @@
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.11.216:3311/cloud_afwk?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: handoracle
+  rabbitmq:
+    host: 192.168.12.48
+    port: 5672
+    username: guest
+    password: guest
+    publisher-confirms: true
+    virtual-host: /
+    listener:
+      acknowledge-mode: MANUAL
+  redis:
+    host: 192.168.12.48
+    port: 6379
+    clientName: API-GATEWAY
+    database: 2
+    dftExpire: 21600
+    lockDatabase: 6
+  http:
+    multipart:
+      maxFileSize: 20Mb
+      maxRequestSize: 200Mb
+zuul:
+  host:
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 60000
+  addHostHeader: true
+  routes:
+    common:
+      path: /api/common/**
+      serviceId: hscf-cloud-common
+    afwk:
+      path: /api/afwk/**
+      serviceId: hscf-cloud-afwk
+    mst:
+      path: /api/mst/**
+      serviceId: hscf-cloud-mst
+    fund:
+      path: /api/fund/**
+      serviceId: hscf-cloud-fund
+    wf:
+      path: /api/wf/**
+      serviceId: hscf-cloud-wf
+    monitor:
+      path: /api/mon/**
+      serviceId: hscf-cloud-hdlink-service
+    report:
+      path: /api/report/**
+      serviceId: hscf-cloud-report
+    lbt:
+      path: /api/lbt/**
+      serviceId: hscf-cloud-lbt
+    job:
+      path: /api/job/**
+      serviceId: hscf-cloud-job
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 60000
+ribbon:
+  ReadTimeout: 360000
+  ConnectTimeout: 360000
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 1
+  OkToRetryOnAllOperations: true
