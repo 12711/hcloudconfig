@@ -11,7 +11,7 @@ spring:
     dftExpire: 600
     lockDatabase: 3
   rabbitmq:
-    host: 192.168.11.210
+    host: 192.168.11.2107
     port: 5672
     username: guest
     password: guest
