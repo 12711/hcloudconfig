@@ -7,7 +7,7 @@ spring:
     host: 192.168.11.201
     port: 6379
     clientName: API-GATEWAY
-    database: 2
+    database: 1
     dftExpire: 600
     lockDatabase: 3
   rabbitmq:
