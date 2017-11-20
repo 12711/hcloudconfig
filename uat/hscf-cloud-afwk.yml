@@ -46,7 +46,7 @@ context:
          com.hscf.cloud.afwk.redis.CacheMessageListener
 hcloud:
     domain:
-        scf: http://scfuat.hjl.hscf.com/
+        scf: http://scfuat.hjl.hscf.com/yyy
         auth: https://uat.hjl.hscf.com/
         rms: https://rmsuat.hscf.com/
 
